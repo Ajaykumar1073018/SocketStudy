@@ -98,6 +98,10 @@ while True:
         c.close()
         break
 
+## Output:
+<img width="1061" height="233" alt="image" src="https://github.com/user-attachments/assets/6839de9d-b624-462a-83a1-b322132af98f" />
+<img width="1021" height="219" alt="image" src="https://github.com/user-attachments/assets/569cb33a-cd89-456e-a122-ef6ef797bea2" />
+
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
