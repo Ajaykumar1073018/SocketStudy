@@ -1,5 +1,6 @@
 # Ex.No:1a  			Study of Socket Programming
-
+## Name: Ajay kumar T
+## Reg no: 212223047001
 ## Aim: 
 To perform a study on Socket Programming
 ## Introduction:
@@ -52,6 +53,50 @@ Socket programming finds applications in various domains, including web developm
 3.	File Transfer Protocol: Protocols like FTP (File Transfer Protocol) utilize socket programming for transferring files between a client and a server.
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
+## Client:
+import socket
+
+# Create socket
+s = socket.socket()
+s.connect(('localhost', 8000))   # Connect to server
+print("Connected to server...")
+
+while True:
+    data = s.recv(1024).decode()   # Receive data
+    if not data:   # If no data, server closed
+        print("Server disconnected")
+        break
+
+    print("Server:", data)
+    ack = "Got it: " + data
+    s.send(ack.encode())   # Send acknowledgment
+## Server:
+import socket
+
+s = socket.socket()
+s.bind(('localhost', 8000))   
+s.listen(5)                  
+print("Server is waiting for connection...")
+
+c, addr = s.accept()
+print("Connected with:", addr)
+
+while True:
+    i = input("Enter Data: ")
+    if not i:  
+        print("Closing connection...")
+        c.close()
+        break
+
+    c.send(i.encode())       
+    ack = c.recv(1024).decode() 
+
+    if ack:
+        print("Client:", ack)
+    else:
+        print("Client disconnected")
+        c.close()
+        break
 
 
 ## Result:
